@@ -1,12 +1,13 @@
-
 import React from 'react';
 import { ScrollView, View, Text, TouchableOpacity } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 
+// Quotelist component for displaying a list of quotes
 function Quotelist({ data, backgroundColor, shareImage, captureAndSave, copyToClipboard }) {
     // console.log(data);
 
     return (
+        // ScrollView to contain the list of quotes
         <ScrollView contentContainerStyle={{
             flexGrow: 1,
             justifyContent: 'center',
@@ -14,6 +15,7 @@ function Quotelist({ data, backgroundColor, shareImage, captureAndSave, copyToCl
             backgroundColor: "#63B4E6",
             width: "100%"
         }}>
+            {/* Map through the data to render individual quotes */}
             {data && data.map(item => (
                 <View key={Math.random()} style={{
                     width: '100%',
@@ -27,6 +29,7 @@ function Quotelist({ data, backgroundColor, shareImage, captureAndSave, copyToCl
                     shadowRadius: 2,
                     elevation: 5,
                 }}>
+                    {/* Display the content of the quote */}
                     <Text style={{
                         color: "#000",
                         fontSize: 20,
@@ -36,6 +39,7 @@ function Quotelist({ data, backgroundColor, shareImage, captureAndSave, copyToCl
                         textAlign: "center",
                         marginBottom: 10,
                     }}>{`"${item.content}"`}</Text>
+                    {/* Display the author of the quote */}
                     <Text style={{
                         textAlign: "right",
                         fontWeight: "400",
@@ -44,6 +48,7 @@ function Quotelist({ data, backgroundColor, shareImage, captureAndSave, copyToCl
                         color: "#000",
                         marginTop: 10
                     }}>{`--${item.author}`}</Text>
+                    {/* Action buttons for copying, downloading, and sharing the quote */}
                     <View style={{ flexDirection: "row", justifyContent: "space-around", marginTop: 10 }}>
                         <TouchableOpacity
                             onPress={copyToClipboard}
